@@ -31,5 +31,7 @@ fun calculateTotalMealCost(baseCost : Double, taxRate : Double, tipPercentage : 
     fun applyDiscount(sumWithTip : Double) : Double {
         return sumWithTip - DEFAULT_DISCOUNT
     }
-    return applyDiscount(applyTip(tipPercentage, applyTax(taxRate, baseCost)))
+    val costWithTax = applyTax(baseCost, taxRate)
+    val costWithTip = applyTip(costWithTax, tipPercentage)
+    return applyDiscount(costWithTip)
 }
